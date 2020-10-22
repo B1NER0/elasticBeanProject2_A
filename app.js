@@ -10,7 +10,7 @@ const url = 'mongodb://myUserAdmin:abc123@3.84.45.74/Admin?retryWrites=true&w=ma
 MongoClient.connect(url, (err, database) => {
     if (err) return console.log(err);
     db = database.db("Admin");
-    console.log("SDF");
+    console.log("SDF");    
 });
 
 
