@@ -11,21 +11,21 @@ const url = 'mongodb://thisOne:1234@3.84.45.74/TestDB?retryWrites=true&w=majorit
 
 
 app.get('/', (req, res) => {
-    res.send("This is the homepage baby OOOH hhYEEAH");
+    //res.send("This is the homepage baby OOOH hhYEEAH");
 
-   // MongoClient.connect(url, (err, database) => {
-    //    if (err) return console.log(err);
-    //   var db = database.db("TestDB");
-     //   db.collection("TestDB").findOne({
-      //      _id: "1"
-      //  },
-      //  function(err, result){
-      //      if(err) return console.log(err);
-      //      res.send(result.color);
-      //      console.log(result.color); 
+    MongoClient.connect(url, (err, database) => {
+        if (err) return console.log(err);
+       var db = database.db("TestDB");
+        db.collection("TestDB").findOne({
+            _id: "1"
+        },
+        function(err, result){
+            if(err) return console.log(err);
+            res.send(result.name);
+            console.log(result.name); 
             
-   // });
-//});
+    });
+});
 });
 app.listen(PORT, () => {
     console.log("Server is running...");
