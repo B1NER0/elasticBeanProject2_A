@@ -10,7 +10,7 @@ const url = 'mongodb://username:password@3.84.36.77/thisOne?retryWrites=true&w=m
 
 
 
-app.get('/', (req, res) => {
+app.get('/test', (req, res) => {
     //res.send("This is the homepage baby OOOH hhYEEAH");
 
     MongoClient.connect(url, (err, database) => {
