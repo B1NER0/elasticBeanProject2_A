@@ -6,7 +6,7 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const { json } = require('express');
 
-const url = 'mongodb://username:password@3.84.36.77/thisOne?retryWrites=true&w=majority'; 
+const url = 'mongodb://username:password@3.84.36.77/thisOne?retryWrites=true&w=majority'; //
 
 
 
