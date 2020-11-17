@@ -13,7 +13,7 @@ const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload')
 
-const PORT = process.env.PORT || 8080;
+const url = 'mongodb://username:password@3.84.36.77/thisOne?retryWrites=true&w=majority'; //
 
 const app = express();app.use(cors());
 app.use(express.json());
@@ -26,20 +26,19 @@ app.use(bodyParser.urlencoded({extended: true}))
 var URI = "mongodb+srv://phil:Alfadelta4@cluster0.ibqct.mongodb.net/?retryWrites=true&w=majority";
 var dbo;
 
-MongoClient.connect(URI, function(err, db) {
-    if(err) throw err;
-    else{
-        console.log("Mongo connected successfully");        
-    }   
-    
-    dbo = db.db("CMPG");
-});
+app.get('/', (req, res) => {
+    //res.send("This is the homepage baby OOOH hhYEEAH");
 
-//Retrieve all users
-app.get('/users', (req, res) => {
-    dbo.collection("Users").find({}).toArray(function(err, result){
-        if(err) throw err;
-        res.send(result);
+    MongoClient.connect(url, (err, database) => {
+        if (err) return console.log(err);
+       var db = database.db("thisOne");
+        db.collection("Test").findOne({
+           _id: "1"
+        },
+        function(err, result){
+            if(err) return console.log(err);
+            res.send(result.name);
+            console.log(result.name);             
     });
 })
 
